@@ -13,9 +13,10 @@ import { IEvent, ISession } from '../shared/index'
 })
 
 export class EventDetailsComponent{
-    event:IEvent
-    addMode:boolean
-
+    event:IEvent;
+    addMode:boolean;
+    filterBy: string = 'all';
+    sortBy: string = 'votes';
     constructor(private eventService: EventService, private route:ActivatedRoute){
 
     }
@@ -32,5 +33,8 @@ export class EventDetailsComponent{
         this.event.sessions.push(session)
         this.eventService.updateEvent(this.event)
         this.addMode = false
+    }
+    cancelAddSession(){
+      this.addMode = false
     }
 }
